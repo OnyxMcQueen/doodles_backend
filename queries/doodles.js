@@ -43,11 +43,22 @@ async function createDoodle(data){
     }
 }
 
+async function deleteDoodle(id){
+    try{
+        let result = await db.any("DELETE FROM doodles WHERE id = $1 RETURNING *", id);
+        return result;
+    }
+    catch(error){
+        return error;
+    }
+}
+
 
 
 
 module.exports = {
     getAllDoodles,
     getOneDoodle,
-    createDoodle
+    createDoodle,
+    deleteDoodle
 }

@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllDoodles, getOneDoodle, createDoodle } = require('../queries/doodles');
+const { getAllDoodles, getOneDoodle, createDoodle, deleteDoodle } = require('../queries/doodles');
 
 //INDEX - GET ALL DOODLES
 router.get('/', async (req, res) => {
@@ -36,6 +36,20 @@ router.post('/', async (req, res) => {
 
     if(result.length === 0){
         res.status(500).send("Sorry, the doodle couldn't be created")
+    }
+    else{
+        res.send(result[0]);
+    }
+});
+
+//DELETE - DELETE A DOODLE
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+
+    let result = await deleteDoodle(id);
+
+    if(result.length === 0){
+        res.status(500).send("Sorry, this doodle couldn't be deleted")
     }
     else{
         res.send(result[0]);
