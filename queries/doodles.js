@@ -43,6 +43,7 @@ async function createDoodle(data){
     }
 }
 
+//DELETE DOODLE
 async function deleteDoodle(id){
     try{
         let result = await db.any("DELETE FROM doodles WHERE id = $1 RETURNING *", id);
@@ -53,6 +54,30 @@ async function deleteDoodle(id){
     }
 }
 
+//UPDATE DOODLE
+async function updateDoodle(id, data){
+    let values = Object.values(data);
+
+    function makeCustomQueryString(data){
+        let count = 2;
+        let result = "";
+
+        for(let key in data){
+            result+= `${key} = $${count},`
+            count++;
+        }
+
+        result = result.substring(0, result.length - 1);
+        return result;
+    }
+
+    let queryString = makeCustomQueryString(data);
+    let finalQueryString = `UPDATE doodles SET ${queryString} WHERE id = $1 RETURNING *`
+
+    const result = await db.any(finalQueryString, [id, ...values]);
+    return result;
+}
+
 
 
 
@@ -60,5 +85,6 @@ module.exports = {
     getAllDoodles,
     getOneDoodle,
     createDoodle,
-    deleteDoodle
+    deleteDoodle,
+    updateDoodle
 }
