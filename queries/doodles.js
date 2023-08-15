@@ -23,10 +23,31 @@ async function getOneDoodle(id){
     }
 }
 
+//CREATE A DOODLE
+async function createDoodle(data){
+
+    const {
+        title,
+        artist_name,
+        created_date,
+        image_url,
+        doodle_description
+    } = data;
+
+    try{
+        let result = await db.any("INSERT INTO doodles (title, artist_name, created_date, image_url, doodle_description) VALUES ($1, $2, $3, $4, $5) RETURNING *", [title, artist_name, created_date, image_url, doodle_description]);
+        return result;
+    }
+    catch(error){
+        return error;
+    }
+}
+
 
 
 
 module.exports = {
     getAllDoodles,
-    getOneDoodle
+    getOneDoodle,
+    createDoodle
 }
