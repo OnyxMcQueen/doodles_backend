@@ -4,6 +4,8 @@ const router = express.Router();
 
 const { getAllDoodles, getOneDoodle, createDoodle, deleteDoodle, updateDoodle } = require('../queries/doodles');
 
+const { validateURL, validateDate } = require('../validations/validations');
+
 //INDEX - GET ALL DOODLES
 router.get('/', async (req, res) => {
     let result = await getAllDoodles();
@@ -31,7 +33,7 @@ router.get('/:id', async (req, res) => {
 });
 
 //CREATE - MAKE A DOODLE
-router.post('/', async (req, res) => {
+router.post('/', validateURL, validateDate, async (req, res) => {
     let result = await createDoodle(req.body);
 
     if(result.length === 0){
@@ -57,7 +59,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 //UPDATE - UPDATE A DOODLE
-router.put('/:id', async (req, res) => {
+router.put('/:id', validateURL, validateDate, async (req, res) => {
     const { id } = req.params;
 
     let result = await updateDoodle(id, req.body);
