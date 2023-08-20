@@ -7,4 +7,4 @@ VALUES
     ('Floral Dreams', 'SketchyJane', '2023-08-16', 'https://static.vecteezy.com/system/resources/previews/001/338/274/non_2x/floral-doodle-seamless-pattern-background-free-vector.jpg', 'A dreamy floral pattern'),
     ('Space Odyssey', 'StarDoodler', '2023-08-17', 'https://www.creativefabrica.com/wp-content/uploads/2022/04/12/Space-doodle-Graphics-28866371-1.jpg', 'Space-themed doodle with planets and stars.'),
     ('Doodle Mandala', 'ZenSketches', '2023-08-18', 'https://muralsyourway.vtexassets.com/arquivos/ids/233850/Doodle-Mandala-Wallpaper-Mural.jpg?v=638164880054800000', 'An intricate mandala design for relaxation.'),
-    ('Surreal Landscape', 'DreamWeaver', '2023-08-19', 'https://www.supercoloring.com/sites/default/files/styles/coloring_medium/public/cif/2019/05/anti-stress-landscape-coloring-page.png', 'A surreal landscape featuring imaginative elements.');
+    ('Surreal Landscape', 'DreamWeaver', '2023-08-19', 'https://i.pinimg.com/564x/98/da/c0/98dac038181f2348f79e3f3289d6ece0.jpg', 'A surreal landscape featuring imaginative elements.');
