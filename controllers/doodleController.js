@@ -59,7 +59,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 //UPDATE - UPDATE A DOODLE
-router.put('/:id', validateURL, validateDate, async (req, res) => {
+router.put('/:id', async (req, res) => {
     const { id } = req.params;
 
     let result = await updateDoodle(id, req.body);
